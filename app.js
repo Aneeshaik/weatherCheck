@@ -6,8 +6,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + "/public"));
 
 app.get("/", function(req, res){
-            res.sendFile(__dirname + "/index.html");
-        });
+    res.sendFile(__dirname + "/index.html");
+});
 
 app.post("/", function(req, res){
     var cityName = req.body.city;
@@ -15,7 +15,7 @@ app.post("/", function(req, res){
     https.get(url, function(response){
         response.on("data", function(d){
             const weatherData = JSON.parse(d);
-            console.log(weatherData);
+            // console.log(weatherData);
             const temp = weatherData.main.temp;
             const weatherCondition = weatherData.weather[0].description;
             const icon = weatherData.weather[0].icon;
